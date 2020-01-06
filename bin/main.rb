@@ -257,6 +257,8 @@ end
 
 print = Print.new
 
+print.print_logo
+
 cursor_speed = 0.02
 # =begin
 print.print_animated("\nPlayer one enter your name: ".yellow, cursor_speed)
