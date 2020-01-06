@@ -112,7 +112,26 @@ class Print
       puts '| ' + 'c'.cyan + " #{colorize_mark(game_state[2][0])} | #{colorize_mark(game_state[2][1])} | #{colorize_mark(game_state[2][2])}  |"
       puts '|              |'
       puts '+--------------+'
-    end  
+    end
+
+    def print_error(error_message)
+      # error_message = error_message.red
+  
+      (0...error_message.length).each do |i|
+        system('clear') || system('cls')
+  
+        output_string = ' ' + '_' * (error_message.length + 6) + "\n"
+        output_string += '/\\' + ' ' * (error_message.length + 5) + '\\' + "\n"
+        output_string += '\\_|' + ' ' * (error_message.length + 5) + '|' + "\n"
+        output_string += '  |  ' + error_message[0..i - error_message.length].red + ' ' * (error_message.length - 1 - i) + "   |\n"
+        output_string += '  |' + ' ' * (error_message.length + 5) + '|' + "\n"
+        output_string += '  |   ' + '_' * (error_message.length + 2) + '|_' + "\n"
+        output_string += '   \\_/' + '_' * (error_message.length + 3) + '/' + "\n"
+  
+        puts output_string
+        sleep 0.02
+      end
+    end
   
     private
   
@@ -158,4 +177,6 @@ player1.strip!
 =end
 game_state = [[' ', 'X', ' '], [' ', 'O', ' '], [' ', 'X', ' ']]
 
-print.print_game_state(game_state)
+# print.print_game_state(game_state)
+
+print.print_error("I'm a dummy error message!")
