@@ -92,7 +92,27 @@ class Print
         sleep 0.005
       end
     end
-    
+
+    def print_animated(string, interval)
+      string.each_char do |c|
+        print c
+        sleep interval
+      end
+    end
+
+    def print_game_state(game_state)
+      system('clear') || system('cls')
+      puts '+--------------+'
+      puts '|              |'
+      puts '|   ' + '1'.cyan + '   ' + '2'.cyan + '   ' + '3'.cyan + '  |'
+      puts '| ' + 'a'.cyan + " #{colorize_mark(game_state[0][0])} | #{colorize_mark(game_state[0][1])} | #{colorize_mark(game_state[0][2])}  |"
+      puts '|  ----------- |'
+      puts '| ' + 'b'.cyan + " #{colorize_mark(game_state[1][0])} | #{colorize_mark(game_state[1][1])} | #{colorize_mark(game_state[1][2])}  |"
+      puts '|  ----------- |'
+      puts '| ' + 'c'.cyan + " #{colorize_mark(game_state[2][0])} | #{colorize_mark(game_state[2][1])} | #{colorize_mark(game_state[2][2])}  |"
+      puts '|              |'
+      puts '+--------------+'
+    end  
   
     private
   
@@ -119,4 +139,23 @@ class Print
       colorized_string += string[color_green_end + 1..color_blue_start - 1]
       colorized_string + string[color_blue_start..color_blue_end].blue
     end
+
+    def colorize_mark(mark)
+      mark = mark.red if mark == 'X'
+      mark = mark.green if mark == 'O'
+  
+      mark
+    end
 end
+
+print = Print.new
+
+cursor_speed = 0.02
+=begin
+print.print_animated("\nPlayer one enter your name: ".yellow, cursor_speed)
+player1 = gets.chomp
+player1.strip!
+=end
+game_state = [[' ', 'X', ' '], [' ', 'O', ' '], [' ', 'X', ' ']]
+
+print.print_game_state(game_state)
