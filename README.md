@@ -12,7 +12,7 @@
 
 ## Description of the project 
 
->Rebuild of some of the most used Enumerable methods (each, each_with_index, select, all?, any?, none?, count, map, inject) practicing the use of "yield" and "Proc"
+>
 
 ## Built with
 <ul>
