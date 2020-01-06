@@ -131,6 +131,86 @@ class Print
         puts output_string
         sleep 0.02
       end
+
+      sleep 1
+    end
+
+    def print_winner(player)
+      line1_word = 'Congratulations'
+      line2_word = player.name + ' WON!'
+  
+      line_length = [line1_word.length, line2_word.length].max
+      line_length += 12
+  
+      line1_string1 = '+'.red + '-'.cyan * (((line_length - line1_word.length) / 2.0).floor - 1) + ' '
+      line1_string2 = ' ' + '-'.cyan * (((line_length - line1_word.length) / 2.0).ceil - 1) + '+'.red
+  
+      line2_string1 = '|'.cyan + ' ' * ((line_length - line2_word.length) / 2.0).floor
+      line2_string2 = ' ' * ((line_length - line2_word.length) / 2.0).ceil + '|'.cyan
+  
+      line3_string = '+'.red + '-'.cyan * line_length + '+'.red
+  
+      output_string1 = ''
+  
+      (0...line1_word.length).each do |i|
+        system('clear') || system('cls')
+  
+        output_string1 = line1_string1
+        output_string1 += line1_word[0..i - line1_word.length].yellow + ' ' * (line1_word.length - 1 - i)
+        output_string1 += line1_string2
+  
+        puts output_string1
+        sleep 0.02
+      end
+  
+      output_string2 = ''
+  
+      (0...line2_word.length).each do |i|
+        system('clear') || system('cls')
+  
+        output_string2 = output_string1 + "\n" + line2_string1
+        output_string2 += line2_word[0..i - line2_word.length].yellow + ' ' * (line2_word.length - 1 - i)
+        output_string2 += line2_string2
+  
+        puts output_string2
+        sleep 0.05
+      end
+  
+      puts line3_string
+  
+      line1_word = line1_word.yellow
+      line2_word = line2_word.yellow
+  
+      trophy_lines = [
+        ' _-------_ ',
+        '(         )',
+        ' \\ \\   / / ',
+        '  \\   o /  ',
+        '  \\  /  /  ',
+        '   | / |   ',
+        '  / / / \\  ',
+        ' [=======] '
+      ]
+  
+      trophy_length = trophy_lines[0].length
+  
+      line4_string1 = '|'.cyan + ' ' * ((line_length - trophy_length) / 2.0).floor
+      line4_string2 = ' ' * ((line_length - trophy_length) / 2.0).ceil + '|'.cyan
+  
+      (0...trophy_lines.length).each do |i|
+        output_string = line1_string1 + line1_word + line1_string2 + "\n" +
+                        line2_string1 + line2_word + line2_string2 + "\n" + line3_string + "\n"
+  
+        (0...trophy_lines.length).each do |j|
+          insert_string = j > i ? ' ' * trophy_length : trophy_lines[j].yellow
+          output_string +=  line4_string1 + insert_string + line4_string2 + "\n"
+        end
+        output_string += line3_string
+  
+        system('clear') || system('cls')
+        puts output_string
+        sleep 0.05
+      end
     end
   
     private
@@ -167,16 +247,44 @@ class Print
     end
 end
 
+class Player
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
 print = Print.new
 
 cursor_speed = 0.02
-=begin
+# =begin
 print.print_animated("\nPlayer one enter your name: ".yellow, cursor_speed)
 player1 = gets.chomp
 player1.strip!
-=end
+
+
+# print.print_animated('Player two enter your name: '.yellow, cursor_speed)
+# player2 = gets.chomp
+# player2.strip!
+
+player1 = Player.new(player1)
+# player2 = Player.new(player2)
+# =end
+
+current_player = player1
+
 game_state = [[' ', 'X', ' '], [' ', 'O', ' '], [' ', 'X', ' ']]
 
-# print.print_game_state(game_state)
+print.print_game_state(game_state)
+
+print.print_animated("\n#{current_player.name} enter coordinate: ".yellow, cursor_speed)
+coordinate = gets.chomp
+coordinate.strip!
 
 print.print_error("I'm a dummy error message!")
+
+print.print_winner(player1)
+
+print.print_animated("\nDo you want to play another another round?\nEnter Y/N: ".yellow, cursor_speed)
+decision = gets.chomp
