@@ -266,17 +266,70 @@ player1 = gets.chomp
 player1.strip!
 
 
-# print.print_animated('Player two enter your name: '.yellow, cursor_speed)
-# player2 = gets.chomp
-# player2.strip!
+print.print_animated('Player two enter your name: '.yellow, cursor_speed)
+player2 = gets.chomp
+player2.strip!
 
 player1 = Player.new(player1)
-# player2 = Player.new(player2)
+player2 = Player.new(player2)
 # =end
 
 current_player = player1
 
 game_state = [[' ', 'X', ' '], [' ', 'O', ' '], [' ', 'X', ' ']]
+
+stay_in_game = true
+play_game = true
+
+while stay_in_game
+  spots_filled = 0
+
+  while play_game
+    begin
+      print.print_game_state(game.game_state)
+      print.print_animated("\n#{current_player.name} enter coordinate: ".yellow, cursor_speed)
+      coordinate = gets.chomp
+      coordinate.strip!
+      #game.mark_spot(current_player, coordinate)
+    rescue ArgumentError => e
+      print.print_error(e.message)
+      sleep 1
+      retry
+    end
+
+    spots_filled += 1
+
+    if game.check_for_winner
+      print.print_winner(current_player)
+      play_game = false
+    elsif spots_filled == 9
+      print.print_game_state(game.game_state)
+      play_game = false
+    else
+      current_player = current_player.equal?(player1) ? player2 : player1
+    end
+
+    break
+  end
+
+  print.print_animated("\nDo you want to play another another round?\nEnter Y/N: ".yellow, cursor_speed)
+  decision = gets.chomp
+
+  system('clear') || system('cls')
+
+  if decision.downcase == 'y'
+    temp_value = player1
+    player1 = player2
+    player2 = temp_value
+    current_player = player1
+    game = TicTacToe.new(player1, player2)
+    play_game = true
+  end
+
+  stay_in_game = false if decision.downcase == 'n'
+end
+
+=begin
 
 print.print_game_state(game_state)
 
@@ -290,3 +343,4 @@ print.print_winner(player1)
 
 print.print_animated("\nDo you want to play another another round?\nEnter Y/N: ".yellow, cursor_speed)
 decision = gets.chomp
+=end
