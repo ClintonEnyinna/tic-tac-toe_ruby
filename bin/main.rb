@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+#frozen_string_literal: true
+
 class String
     def red
       colorize(31)
@@ -247,24 +249,19 @@ class Print
     end
 end
 
-class Player
-  attr_reader :name
-
-  def initialize(name)
-    @name = name
-  end
-end
+require_relative '../lib/tic_tac_toe.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/board.rb'
 
 print = Print.new
 
 print.print_logo
 
 cursor_speed = 0.02
-# =begin
+
 print.print_animated("\nPlayer one enter your name: ".yellow, cursor_speed)
 player1 = gets.chomp
 player1.strip!
-
 
 print.print_animated('Player two enter your name: '.yellow, cursor_speed)
 player2 = gets.chomp
@@ -272,14 +269,13 @@ player2.strip!
 
 player1 = Player.new(player1)
 player2 = Player.new(player2)
-# =end
 
-current_player = player1
-
-game_state = [[' ', 'X', ' '], [' ', 'O', ' '], [' ', 'X', ' ']]
+game = TicTacToe.new(player1, player2)
 
 stay_in_game = true
 play_game = true
+
+current_player = player1
 
 while stay_in_game
   spots_filled = 0
