@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'board.rb'
+
 class TicTacToe
   def initialize(player1, player2)
     @player1 = player1
