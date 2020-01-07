@@ -2,6 +2,10 @@
 
 #frozen_string_literal: true
 
+require_relative '../lib/tic_tac_toe.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/board.rb'
+
 class String
     def red
       colorize(31)
@@ -116,9 +120,7 @@ class Print
       puts '+--------------+'
     end
 
-    def print_error(error_message)
-      # error_message = error_message.red
-  
+    def print_error(error_message)  
       (0...error_message.length).each do |i|
         system('clear') || system('cls')
   
@@ -249,10 +251,6 @@ class Print
     end
 end
 
-require_relative '../lib/tic_tac_toe.rb'
-require_relative '../lib/player.rb'
-require_relative '../lib/board.rb'
-
 print = Print.new
 
 print.print_logo
@@ -286,7 +284,7 @@ while stay_in_game
       print.print_animated("\n#{current_player.name} enter coordinate: ".yellow, cursor_speed)
       coordinate = gets.chomp
       coordinate.strip!
-      #game.mark_spot(current_player, coordinate)
+      game.mark_spot(current_player, coordinate)
     rescue ArgumentError => e
       print.print_error(e.message)
       sleep 1
@@ -304,8 +302,6 @@ while stay_in_game
     else
       current_player = current_player.equal?(player1) ? player2 : player1
     end
-
-    break
   end
 
   print.print_animated("\nDo you want to play another another round?\nEnter Y/N: ".yellow, cursor_speed)
@@ -324,19 +320,3 @@ while stay_in_game
 
   stay_in_game = false if decision.downcase == 'n'
 end
-
-=begin
-
-print.print_game_state(game_state)
-
-print.print_animated("\n#{current_player.name} enter coordinate: ".yellow, cursor_speed)
-coordinate = gets.chomp
-coordinate.strip!
-
-print.print_error("I'm a dummy error message!")
-
-print.print_winner(player1)
-
-print.print_animated("\nDo you want to play another another round?\nEnter Y/N: ".yellow, cursor_speed)
-decision = gets.chomp
-=end

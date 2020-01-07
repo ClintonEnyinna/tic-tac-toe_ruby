@@ -1,10 +1,10 @@
 #frozen_string_literal: true
 
 class Board
-    attr_reader: game_state
+    attr_reader :game_state
 
     def initialize
-        game_state = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+        @game_state = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
     end
 
     def mark_spot(coordinate, symbol)
