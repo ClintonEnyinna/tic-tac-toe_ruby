@@ -1,48 +1,49 @@
-<h1 align="center">Tic Tac Toe</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
-  <a href="#" target="_blank">
-    <img alt="License: MIT " src="https://img.shields.io/badge/License-MIT -yellow.svg" />
-  </a>
-  <a href="https://twitter.com/ClintonEnyinna" target="_blank">
-    <img alt="Twitter: ClintonEnyinna " src="https://img.shields.io/twitter/follow/ClintonEnyinna .svg?style=social" />
-  </a>
-</p>
+# Tic Tac Toe
 
+This is a implementation of the Tic Tac Toe game in Ruby on the console. We created some console graphics for it, which give it a little bit Arcade era feeling to make things more interesting.
 
-## Description of the project 
+## Getting Started
 
->
+First the game asks name from both players and player one starts the first round. Player one has 'X' marks on the table and player two has 'O' marsk on the table as is seen below on the game table. Coordinate system and game table is built like shown below on the game table. So one can enter coordinates like - 'a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'. One coordinate on each turn. Game is won by player who is able to get three its marks on a straight line vertically, horizontally or diagonally. When one tries to give in coordinate, name or some other command, after writing your input one has to press enter! Happy playing!
 
-## Built with
-<ul>
-  <p>This project was built with:</p>
-  <li>Ruby</li>
-</ul>
++--------------+
+|              |
+|   1   2   3  |
+| a   | X |    |
+|  ----------- |
+| b O |   |    |
+|  ----------- |
+| c   |   |    |
+|              |
++--------------+
 
-## 🏠 [Homepage](https://github.com/ClintonEnyinna/enumerable_methods)
+### Prerequisites
 
-<!-- CONTRIBUTING -->
-## Contributing
+What things you need to install the software and how to install them
 
-Any contributions you make are **greatly appreciated**.
+```
+One has to have Ruby installed in its computer.
+```
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### Installing
 
+The exact guide to install Ruby can be found here [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 
+One has to download the project in its computer, open terminal/command prompt, navigate to the project folder and then run command 'bin/main.rb'
 
-<!-- LICENSE -->
+## Built With
+
+* [Ruby](https://www.ruby-lang.org/en/) - Programming language used
+* [VS Code](https://code.visualstudio.com/) - The code editor used 
+
+## Authors
+
+* **Jaak Kivinukk** - *Initial work* - [Jaakal](https://github.com/Jaakal)
+* **Clinton Enyinna** - *Initial work* - [ClintonEnyinna](https://github.com/ClintonEnyinna)
+
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-## Author
 
-👤 **Clinton Enyinna**
 
-* Twitter: [@enyinnaclinton ](https://twitter.com/ClintonEnyinna)
-* Github: [@ClintonEnyinna](https://github.com/https:\/\/github.com\/ClintonEnyinna) 
