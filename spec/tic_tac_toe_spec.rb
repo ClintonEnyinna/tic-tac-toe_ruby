@@ -49,7 +49,22 @@ describe TicTacToe do
   end
 
   describe '#check_for_winner' do
+    it 'returns false when game board is empty' do
+      game_winner = TicTacToe.new(player1, player2)
+      expect(game.check_for_winner).to eql(false)
+    end
+
     it "returns false when any row isn't marked with same player symbols" do
+      game_winner = TicTacToe.new(player1, player2)
+      game_winner.mark_spot(player1, 'a1')
+      game_winner.mark_spot(player1, 'a3')
+      game_winner.mark_spot(player1, 'b1')
+      game_winner.mark_spot(player1, 'b3')
+      game_winner.mark_spot(player1, 'c2')
+      game_winner.mark_spot(player2, 'a2')
+      game_winner.mark_spot(player2, 'b2')
+      game_winner.mark_spot(player2, 'c1')
+      game_winner.mark_spot(player2, 'c3')
       expect(game.check_for_winner).to eql(false)
     end
 
