@@ -20,12 +20,12 @@ describe TicTacToe do
       expect(game.mark_spot(player1, 'a1')[0][0]).to eql('X')
     end
 
-    it 'if trying to mark a spot already marked raises an exception' do
+    it 'if marking a already marked spot raises an exception' do
       game.mark_spot(player1, 'b1')
       expect { game.mark_spot(player2, 'b1')[1][0] }.to raise_exception
     end
 
-    it 'if giving the wrong coordinate raises an exception' do
+    it 'if wrong coordinate raises an exception' do
       expect { game.mark_spot(player1, 'z9') }.to raise_exception
     end
   end
@@ -35,22 +35,86 @@ describe TicTacToe do
       expect(game.game_state.length).to eql(3)
     end
 
-    it 'returns an array of 3 x 3' do
+    it 'returns an array of 3 x 3 part 1' do
       expect(game.game_state[0].length).to eql(3)
     end
 
-    it 'returns an array of 3 x 3' do
+    it 'returns an array of 3 x 3 part 2' do
       expect(game.game_state[1].length).to eql(3)
     end
 
-    it 'returns an array of 3 x 3' do
+    it 'returns an array of 3 x 3 part 3' do
       expect(game.game_state[2].length).to eql(3)
     end
   end
 
   describe '#check_for_winner' do
-    it 'returns the boolean false' do
+    it "returns false when any row isn't marked with same player symbols" do
       expect(game.check_for_winner).to eql(false)
+    end
+
+    it 'true when first horizontal row is marked with same symbols' do
+      game_winner = TicTacToe.new(player1, player2)
+      game_winner.mark_spot(player1, 'a1')
+      game_winner.mark_spot(player1, 'a2')
+      game_winner.mark_spot(player1, 'a3')
+      expect(game_winner.check_for_winner).to eql(true)
+    end
+
+    it 'true when second horizontal row is marked with same symbols' do
+      game_winner = TicTacToe.new(player1, player2)
+      game_winner.mark_spot(player1, 'b1')
+      game_winner.mark_spot(player1, 'b2')
+      game_winner.mark_spot(player1, 'b3')
+      expect(game_winner.check_for_winner).to eql(true)
+    end
+
+    it 'true when third horizontal row is marked with same symbols' do
+      game_winner = TicTacToe.new(player1, player2)
+      game_winner.mark_spot(player1, 'c1')
+      game_winner.mark_spot(player1, 'c2')
+      game_winner.mark_spot(player1, 'c3')
+      expect(game_winner.check_for_winner).to eql(true)
+    end
+
+    it 'true when first vertical row is marked with same symbols' do
+      game_winner = TicTacToe.new(player1, player2)
+      game_winner.mark_spot(player1, 'a1')
+      game_winner.mark_spot(player1, 'b1')
+      game_winner.mark_spot(player1, 'c1')
+      expect(game_winner.check_for_winner).to eql(true)
+    end
+
+    it 'true when second vertical row is marked with same symbols' do
+      game_winner = TicTacToe.new(player1, player2)
+      game_winner.mark_spot(player1, 'a2')
+      game_winner.mark_spot(player1, 'b2')
+      game_winner.mark_spot(player1, 'c2')
+      expect(game_winner.check_for_winner).to eql(true)
+    end
+
+    it 'true when third vertical row is marked with same symbols' do
+      game_winner = TicTacToe.new(player1, player2)
+      game_winner.mark_spot(player1, 'a3')
+      game_winner.mark_spot(player1, 'b3')
+      game_winner.mark_spot(player1, 'c3')
+      expect(game_winner.check_for_winner).to eql(true)
+    end
+
+    it 'true when first diagonal row is marked with same symbols' do
+      game_winner = TicTacToe.new(player1, player2)
+      game_winner.mark_spot(player1, 'a1')
+      game_winner.mark_spot(player1, 'b2')
+      game_winner.mark_spot(player1, 'c3')
+      expect(game_winner.check_for_winner).to eql(true)
+    end
+
+    it 'true when second diagonal row is marked with same symbols' do
+      game_winner = TicTacToe.new(player1, player2)
+      game_winner.mark_spot(player1, 'a3')
+      game_winner.mark_spot(player1, 'b2')
+      game_winner.mark_spot(player1, 'c1')
+      expect(game_winner.check_for_winner).to eql(true)
     end
   end
 end

@@ -12,8 +12,12 @@ describe Board do
   end
 
   describe '#mark_spot' do
-    it 'if board coordinate marked with a correct symbol' do
+    it 'if board coordinate gets marked with a correct symbol' do
       expect(board.mark_spot([0, 0], 'X')[0][0]).to eql('X')
+    end
+
+    it 'marked board coordinate not to equal other symbol' do
+      expect(board.mark_spot([0, 1], 'O')[0][1]).not_to eql('X')
     end
   end
 end
