@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 require_relative '../lib/tic_tac_toe.rb'
 require_relative '../lib/player.rb'
@@ -119,7 +119,7 @@ class Print
     puts '+--------------+'
   end
 
-  def print_error(error_message)  
+  def print_error(error_message)
     (0...error_message.length).each do |i|
       system('clear') || system('cls')
 
@@ -206,7 +206,7 @@ class Print
 
       (0...trophy_lines.length).each do |j|
         insert_string = j > i ? ' ' * trophy_length : trophy_lines[j].yellow
-        output_string +=  line4_string1 + insert_string + line4_string2 + "\n"
+        output_string += line4_string1 + insert_string + line4_string2 + "\n"
       end
       output_string += line3_string
 
@@ -215,16 +215,16 @@ class Print
       sleep 0.05
     end
   end
-  
+
   private
-  
+
   def conditional(number, ceil)
     return 0 if number.negative?
     return ceil if number > ceil
 
     number
   end
-  
+
   def colorize_string(string)
     color_red_start = 0
     color_red_end = 29

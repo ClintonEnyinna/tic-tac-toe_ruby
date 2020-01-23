@@ -9,7 +9,7 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 200
 Metrics/MethodLength:
   Include: ["app/controllers/*"]
   Max: 20
@@ -17,13 +17,13 @@ Metrics/AbcSize:
   Include: ["app/controllers/*"]
   Max: 30
 Metrics/ClassLength:
-  Max: 150
+  Max: 170
 Metrics/BlockLength:
   ExcludedMethods: ["describe"]
 Metrics/PerceivedComplexity:
-  Max: 15
+  Max: 36
 Metrics/CyclomaticComplexity:
-  Max: 10
+  Max: 37
 
 Style/Documentation:
   Enabled: false
